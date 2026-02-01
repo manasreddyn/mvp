@@ -14,7 +14,227 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      ai_predictions: {
+        Row: {
+          actual_value: Json | null
+          confidence_score: number | null
+          created_at: string
+          device_id: string | null
+          id: string
+          outcome_timestamp: string | null
+          predicted_value: Json
+          prediction_timestamp: string
+          prediction_type: string
+        }
+        Insert: {
+          actual_value?: Json | null
+          confidence_score?: number | null
+          created_at?: string
+          device_id?: string | null
+          id?: string
+          outcome_timestamp?: string | null
+          predicted_value?: Json
+          prediction_timestamp?: string
+          prediction_type: string
+        }
+        Update: {
+          actual_value?: Json | null
+          confidence_score?: number | null
+          created_at?: string
+          device_id?: string | null
+          id?: string
+          outcome_timestamp?: string | null
+          predicted_value?: Json
+          prediction_timestamp?: string
+          prediction_type?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ai_predictions_device_id_fkey"
+            columns: ["device_id"]
+            isOneToOne: false
+            referencedRelation: "iot_devices"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      iot_alerts: {
+        Row: {
+          acknowledged_at: string | null
+          alert_type: Database["public"]["Enums"]["alert_severity"]
+          created_at: string
+          device_id: string | null
+          id: string
+          is_acknowledged: boolean | null
+          message: string | null
+          resolved_at: string | null
+          severity: number | null
+          title: string
+        }
+        Insert: {
+          acknowledged_at?: string | null
+          alert_type?: Database["public"]["Enums"]["alert_severity"]
+          created_at?: string
+          device_id?: string | null
+          id?: string
+          is_acknowledged?: boolean | null
+          message?: string | null
+          resolved_at?: string | null
+          severity?: number | null
+          title: string
+        }
+        Update: {
+          acknowledged_at?: string | null
+          alert_type?: Database["public"]["Enums"]["alert_severity"]
+          created_at?: string
+          device_id?: string | null
+          id?: string
+          is_acknowledged?: boolean | null
+          message?: string | null
+          resolved_at?: string | null
+          severity?: number | null
+          title?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "iot_alerts_device_id_fkey"
+            columns: ["device_id"]
+            isOneToOne: false
+            referencedRelation: "iot_devices"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      iot_devices: {
+        Row: {
+          category: Database["public"]["Enums"]["device_category"]
+          created_at: string
+          device_name: string
+          device_type: Database["public"]["Enums"]["device_type"]
+          firmware_version: string | null
+          id: string
+          last_seen: string | null
+          location: Json | null
+          metadata: Json | null
+          status: Database["public"]["Enums"]["device_status"]
+          updated_at: string
+        }
+        Insert: {
+          category?: Database["public"]["Enums"]["device_category"]
+          created_at?: string
+          device_name: string
+          device_type?: Database["public"]["Enums"]["device_type"]
+          firmware_version?: string | null
+          id?: string
+          last_seen?: string | null
+          location?: Json | null
+          metadata?: Json | null
+          status?: Database["public"]["Enums"]["device_status"]
+          updated_at?: string
+        }
+        Update: {
+          category?: Database["public"]["Enums"]["device_category"]
+          created_at?: string
+          device_name?: string
+          device_type?: Database["public"]["Enums"]["device_type"]
+          firmware_version?: string | null
+          id?: string
+          last_seen?: string | null
+          location?: Json | null
+          metadata?: Json | null
+          status?: Database["public"]["Enums"]["device_status"]
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      iot_rules: {
+        Row: {
+          action: Json
+          condition: Json
+          created_at: string
+          device_id: string | null
+          id: string
+          is_active: boolean | null
+          priority: number | null
+          rule_name: string
+          trigger_count: number | null
+          updated_at: string
+        }
+        Insert: {
+          action?: Json
+          condition?: Json
+          created_at?: string
+          device_id?: string | null
+          id?: string
+          is_active?: boolean | null
+          priority?: number | null
+          rule_name: string
+          trigger_count?: number | null
+          updated_at?: string
+        }
+        Update: {
+          action?: Json
+          condition?: Json
+          created_at?: string
+          device_id?: string | null
+          id?: string
+          is_active?: boolean | null
+          priority?: number | null
+          rule_name?: string
+          trigger_count?: number | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "iot_rules_device_id_fkey"
+            columns: ["device_id"]
+            isOneToOne: false
+            referencedRelation: "iot_devices"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      sensor_data: {
+        Row: {
+          device_id: string | null
+          id: string
+          metadata: Json | null
+          quality: number | null
+          sensor_type: string
+          timestamp: string
+          unit: string | null
+          value: number
+        }
+        Insert: {
+          device_id?: string | null
+          id?: string
+          metadata?: Json | null
+          quality?: number | null
+          sensor_type: string
+          timestamp?: string
+          unit?: string | null
+          value: number
+        }
+        Update: {
+          device_id?: string | null
+          id?: string
+          metadata?: Json | null
+          quality?: number | null
+          sensor_type?: string
+          timestamp?: string
+          unit?: string | null
+          value?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "sensor_data_device_id_fkey"
+            columns: ["device_id"]
+            isOneToOne: false
+            referencedRelation: "iot_devices"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +243,17 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      alert_severity: "info" | "warning" | "critical"
+      device_category:
+        | "smart_home"
+        | "industrial"
+        | "environmental"
+        | "fleet"
+        | "healthcare"
+        | "energy"
+        | "railway"
+      device_status: "active" | "inactive" | "maintenance" | "error"
+      device_type: "sensor" | "actuator" | "gateway" | "hybrid"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +380,19 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      alert_severity: ["info", "warning", "critical"],
+      device_category: [
+        "smart_home",
+        "industrial",
+        "environmental",
+        "fleet",
+        "healthcare",
+        "energy",
+        "railway",
+      ],
+      device_status: ["active", "inactive", "maintenance", "error"],
+      device_type: ["sensor", "actuator", "gateway", "hybrid"],
+    },
   },
 } as const
