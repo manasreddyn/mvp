@@ -21,6 +21,10 @@ import {
   Sparkles,
   Rewind,
   FileWarning,
+  Brain,
+  Wifi,
+  Bell,
+  Wrench,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -34,6 +38,17 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { icon: LayoutDashboard, label: 'Dashboard', path: '/' },
+  {
+    icon: Brain,
+    label: 'IoT Command Center',
+    path: '/iot',
+    children: [
+      { label: 'Overview', path: '/iot', icon: Brain },
+      { label: 'Devices', path: '/iot/devices', icon: Cpu },
+      { label: 'Alerts & Rules', path: '/iot/alerts', icon: Bell },
+      { label: 'AI Insights', path: '/iot/ai', icon: Wrench },
+    ],
+  },
   {
     icon: BarChart3,
     label: 'Data Analytics',
