@@ -19,6 +19,7 @@ import CollisionPrevention from "@/pages/safety/CollisionPrevention";
 import Cleanliness from "@/pages/safety/Cleanliness";
 import LegacyIntegration from "@/pages/safety/LegacyIntegration";
 import IncidentManagement from "@/pages/safety/IncidentManagement";
+import IoTDashboard from "@/pages/iot/IoTDashboard";
 
 const queryClient = new QueryClient();
 
@@ -31,15 +32,23 @@ const App = () => (
         <Routes>
           <Route element={<MainLayout />}>
             <Route path="/" element={<Dashboard />} />
+            {/* IoT Command Center */}
+            <Route path="/iot" element={<IoTDashboard />} />
+            <Route path="/iot/devices" element={<IoTDashboard />} />
+            <Route path="/iot/alerts" element={<IoTDashboard />} />
+            <Route path="/iot/ai" element={<IoTDashboard />} />
+            {/* Analytics */}
             <Route path="/analytics/power" element={<PowerAnalytics />} />
             <Route path="/analytics/iot" element={<IoTTelemetry />} />
             <Route path="/analytics/ticketing" element={<PowerAnalytics />} />
             <Route path="/analytics/footfall" element={<PowerAnalytics />} />
             <Route path="/analytics/assets" element={<PowerAnalytics />} />
+            {/* Other modules */}
             <Route path="/logistics" element={<LogisticsHub />} />
             <Route path="/auction" element={<AuctionDashboard />} />
             <Route path="/pricing" element={<DynamicPricing />} />
             <Route path="/platform" element={<PlatformEfficiency />} />
+            {/* Safety */}
             <Route path="/safety" element={<SafetyDashboard />} />
             <Route path="/safety/track" element={<TrackSafety />} />
             <Route path="/safety/collision" element={<CollisionPrevention />} />
