@@ -73,25 +73,14 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        railway: {
-          blue: "hsl(var(--railway-blue))",
-          "blue-light": "hsl(var(--railway-blue-light))",
-        },
-        signal: {
-          amber: "hsl(var(--signal-amber))",
-          "amber-light": "hsl(var(--signal-amber-light))",
-        },
-        track: {
-          green: "hsl(var(--track-green))",
-          "green-light": "hsl(var(--track-green-light))",
-        },
-        alert: {
-          red: "hsl(var(--alert-red))",
-          "red-light": "hsl(var(--alert-red-light))",
-        },
-        steel: {
-          gray: "hsl(var(--steel-gray))",
-          dark: "hsl(var(--steel-gray-dark))",
+        // Kernex Brand Colors
+        kernex: {
+          red: "hsl(var(--kernex-red))",
+          dark: "hsl(var(--kernex-dark))",
+          "light-bg": "hsl(var(--kernex-light-bg))",
+          "mid-light": "hsl(var(--kernex-mid-light))",
+          neutral: "hsl(var(--kernex-neutral))",
+          "dark-grey": "hsl(var(--kernex-dark-grey))",
         },
         chart: {
           "1": "hsl(var(--chart-1))",
@@ -108,7 +97,7 @@ export default {
       },
       boxShadow: {
         'glow-primary': 'var(--shadow-glow-primary)',
-        'glow-accent': 'var(--shadow-glow-accent)',
+        'glow-dark': 'var(--shadow-glow-dark)',
       },
       keyframes: {
         "accordion-down": {

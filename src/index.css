@@ -2,145 +2,148 @@
 @tailwind components;
 @tailwind utilities;
 
-/* RailSync Pro Design System - Railway Command Center Aesthetic
- * Deep railway blues, signal amber, track green, alert red
- * Industrial-tech meets modern railway heritage
+/* Kernex Design System - Enterprise Industrial IoT Platform
+ * Brand Colors: Kernex Red, Dark, and Professional Gray Scale
+ * Safety-critical, enterprise-ready aesthetic
  */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 @layer base {
   :root {
-    /* Core Railway Blues */
-    --background: 220 25% 97%;
-    --foreground: 220 40% 13%;
+    /* Kernex Brand Colors - HSL Values */
+    /* #FC0A0A → hsl(0, 98%, 51%) - Primary brand color */
+    /* #160E15 → hsl(306, 27%, 7%) - Dark/headings */
+    /* #E8E8E8 → hsl(0, 0%, 91%) - Light background */
+    /* #C6C6C5 → hsl(60, 1%, 77%) - Mid-light borders */
+    /* #A5A4A3 → hsl(30, 1%, 64%) - Neutral/muted */
+    /* #626261 → hsl(60, 1%, 38%) - Dark grey */
 
-    /* Cards with subtle depth */
+    /* Core Backgrounds */
+    --background: 0 0% 91%;
+    --foreground: 306 27% 7%;
+
+    /* Cards with clean white */
     --card: 0 0% 100%;
-    --card-foreground: 220 40% 13%;
+    --card-foreground: 306 27% 7%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 40% 13%;
+    --popover-foreground: 306 27% 7%;
 
-    /* Primary - Deep Railway Blue */
-    --primary: 210 80% 25%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary - Kernex Red */
+    --primary: 0 98% 51%;
+    --primary-foreground: 0 0% 100%;
 
-    /* Secondary - Steel Gray */
-    --secondary: 218 15% 92%;
-    --secondary-foreground: 220 40% 13%;
+    /* Secondary - Dark Grey outline style */
+    --secondary: 0 0% 91%;
+    --secondary-foreground: 306 27% 7%;
 
-    /* Muted - Soft steel */
-    --muted: 218 20% 94%;
-    --muted-foreground: 220 15% 46%;
+    /* Muted - Neutral gray */
+    --muted: 0 0% 91%;
+    --muted-foreground: 30 1% 64%;
 
-    /* Accent - Signal Amber */
-    --accent: 38 95% 55%;
-    --accent-foreground: 38 100% 12%;
+    /* Accent - Kernex Red for interactive */
+    --accent: 0 98% 51%;
+    --accent-foreground: 0 0% 100%;
 
     /* Status Colors */
-    --destructive: 0 72% 51%;
+    --destructive: 0 98% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --success: 158 64% 40%;
-    --success-foreground: 158 100% 98%;
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
 
-    --warning: 38 95% 55%;
-    --warning-foreground: 38 100% 12%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
 
     --info: 200 95% 45%;
-    --info-foreground: 200 100% 98%;
+    --info-foreground: 0 0% 100%;
 
     /* Borders and Inputs */
-    --border: 218 20% 88%;
-    --input: 218 20% 88%;
-    --ring: 210 80% 25%;
+    --border: 60 1% 77%;
+    --input: 60 1% 77%;
+    --ring: 0 98% 51%;
 
     --radius: 0.625rem;
 
-    /* Chart Colors - Railway Signal Palette */
-    --chart-1: 210 80% 35%;
-    --chart-2: 38 95% 55%;
-    --chart-3: 158 64% 40%;
-    --chart-4: 0 72% 51%;
-    --chart-5: 280 60% 50%;
+    /* Chart Colors - Kernex Palette */
+    --chart-1: 0 98% 51%;
+    --chart-2: 306 27% 7%;
+    --chart-3: 142 71% 45%;
+    --chart-4: 38 92% 50%;
+    --chart-5: 200 95% 45%;
 
-    /* Railway-specific tokens */
-    --railway-blue: 210 80% 25%;
-    --railway-blue-light: 210 70% 45%;
-    --signal-amber: 38 95% 55%;
-    --signal-amber-light: 38 90% 70%;
-    --track-green: 158 64% 40%;
-    --track-green-light: 158 50% 60%;
-    --alert-red: 0 72% 51%;
-    --alert-red-light: 0 60% 70%;
-    --steel-gray: 218 15% 65%;
-    --steel-gray-dark: 218 20% 25%;
+    /* Kernex-specific tokens */
+    --kernex-red: 0 98% 51%;
+    --kernex-dark: 306 27% 7%;
+    --kernex-light-bg: 0 0% 91%;
+    --kernex-mid-light: 60 1% 77%;
+    --kernex-neutral: 30 1% 64%;
+    --kernex-dark-grey: 60 1% 38%;
 
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(210 80% 25%) 0%, hsl(210 70% 35%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(38 95% 55%) 0%, hsl(45 95% 60%) 100%);
-    --gradient-success: linear-gradient(135deg, hsl(158 64% 40%) 0%, hsl(158 55% 50%) 100%);
-    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(220 25% 98%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(0 98% 51%) 0%, hsl(0 98% 45%) 100%);
+    --gradient-dark: linear-gradient(135deg, hsl(306 27% 7%) 0%, hsl(306 27% 15%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(0 0% 98%) 100%);
 
     /* Shadows */
-    --shadow-sm: 0 1px 2px 0 hsl(220 40% 13% / 0.05);
-    --shadow-md: 0 4px 6px -1px hsl(220 40% 13% / 0.1), 0 2px 4px -2px hsl(220 40% 13% / 0.1);
-    --shadow-lg: 0 10px 15px -3px hsl(220 40% 13% / 0.1), 0 4px 6px -4px hsl(220 40% 13% / 0.1);
-    --shadow-glow-primary: 0 0 20px hsl(210 80% 25% / 0.3);
-    --shadow-glow-accent: 0 0 20px hsl(38 95% 55% / 0.3);
+    --shadow-sm: 0 1px 2px 0 hsl(306 27% 7% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(306 27% 7% / 0.1), 0 2px 4px -2px hsl(306 27% 7% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(306 27% 7% / 0.1), 0 4px 6px -4px hsl(306 27% 7% / 0.1);
+    --shadow-glow-primary: 0 0 20px hsl(0 98% 51% / 0.3);
+    --shadow-glow-dark: 0 0 20px hsl(306 27% 7% / 0.3);
 
-    /* Sidebar */
-    --sidebar-background: 210 80% 18%;
-    --sidebar-foreground: 210 40% 95%;
-    --sidebar-primary: 38 95% 55%;
-    --sidebar-primary-foreground: 38 100% 12%;
-    --sidebar-accent: 210 70% 25%;
-    --sidebar-accent-foreground: 210 40% 95%;
-    --sidebar-border: 210 60% 25%;
-    --sidebar-ring: 38 95% 55%;
+    /* Sidebar - Dark theme */
+    --sidebar-background: 306 27% 7%;
+    --sidebar-foreground: 0 0% 91%;
+    --sidebar-primary: 0 98% 51%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 306 27% 12%;
+    --sidebar-accent-foreground: 0 0% 91%;
+    --sidebar-border: 306 27% 15%;
+    --sidebar-ring: 0 98% 51%;
   }
 
   .dark {
-    --background: 222 47% 8%;
-    --foreground: 210 40% 98%;
+    --background: 306 27% 7%;
+    --foreground: 0 0% 91%;
 
-    --card: 222 47% 11%;
-    --card-foreground: 210 40% 98%;
+    --card: 306 27% 10%;
+    --card-foreground: 0 0% 91%;
 
-    --popover: 222 47% 11%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 306 27% 10%;
+    --popover-foreground: 0 0% 91%;
 
-    --primary: 210 70% 55%;
-    --primary-foreground: 222 47% 8%;
+    --primary: 0 98% 51%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 306 27% 15%;
+    --secondary-foreground: 0 0% 91%;
 
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 306 27% 15%;
+    --muted-foreground: 30 1% 64%;
 
-    --accent: 38 95% 55%;
-    --accent-foreground: 38 100% 12%;
+    --accent: 0 98% 51%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 62% 50%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 98% 51%;
+    --destructive-foreground: 0 0% 100%;
 
-    --success: 158 55% 45%;
-    --success-foreground: 158 100% 12%;
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
 
-    --border: 217 33% 22%;
-    --input: 217 33% 22%;
-    --ring: 210 70% 55%;
+    --border: 306 27% 20%;
+    --input: 306 27% 20%;
+    --ring: 0 98% 51%;
 
-    --sidebar-background: 222 50% 6%;
-    --sidebar-foreground: 210 40% 95%;
-    --sidebar-primary: 38 95% 55%;
-    --sidebar-primary-foreground: 38 100% 12%;
-    --sidebar-accent: 222 45% 12%;
-    --sidebar-accent-foreground: 210 40% 95%;
-    --sidebar-border: 222 40% 15%;
-    --sidebar-ring: 38 95% 55%;
+    --sidebar-background: 306 30% 5%;
+    --sidebar-foreground: 0 0% 91%;
+    --sidebar-primary: 0 98% 51%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 306 27% 10%;
+    --sidebar-accent-foreground: 0 0% 91%;
+    --sidebar-border: 306 27% 12%;
+    --sidebar-ring: 0 98% 51%;
   }
 }
 
@@ -232,8 +235,8 @@
     box-shadow: var(--shadow-glow-primary);
   }
 
-  .glow-accent {
-    box-shadow: var(--shadow-glow-accent);
+  .glow-dark {
+    box-shadow: var(--shadow-glow-dark);
   }
 
   /* Badge Variants */
@@ -264,14 +267,32 @@
     background-image: var(--gradient-primary);
   }
 
-  /* Train Track Line */
-  .track-line {
+  /* Kernex Brand Line */
+  .brand-line {
     @apply relative;
   }
 
-  .track-line::before {
+  .brand-line::before {
     content: '';
-    @apply absolute left-0 top-1/2 -translate-y-1/2 w-full h-0.5 bg-gradient-to-r from-primary via-accent to-primary;
+    @apply absolute left-0 top-1/2 -translate-y-1/2 w-full h-0.5 bg-gradient-to-r from-primary via-foreground to-primary;
+  }
+
+  /* Splash Screen */
+  .splash-screen {
+    @apply fixed inset-0 z-[100] flex flex-col items-center justify-center;
+    background: hsl(var(--kernex-dark));
+  }
+
+  .splash-logo {
+    animation: splashPulse 1.5s ease-in-out infinite, splashFadeIn 0.5s ease-out;
+  }
+
+  .splash-text {
+    animation: splashSlideUp 0.5s ease-out 0.3s both;
+  }
+
+  .splash-loader {
+    animation: splashSlideUp 0.5s ease-out 0.5s both;
   }
 }
 
@@ -356,6 +377,68 @@
   }
 }
 
+/* Splash Screen Animations */
+@keyframes splashPulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 20px hsl(0 98% 51% / 0.5));
+  }
+  50% {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 40px hsl(0 98% 51% / 0.8));
+  }
+}
+
+@keyframes splashFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes splashSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes splashExit {
+  to {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes loaderDot {
+  0%, 80%, 100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
+
+.loader-dot {
+  animation: loaderDot 1.4s ease-in-out infinite both;
+}
+
+.loader-dot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.loader-dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
 .animate-slide-in {
   animation: slideIn 0.3s ease-out forwards;
 }
@@ -366,4 +449,8 @@
 
 .animate-count-up {
   animation: countUp 0.5s ease-out forwards;
+}
+
+.animate-splash-exit {
+  animation: splashExit 0.5s ease-in forwards;
 }
