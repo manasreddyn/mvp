@@ -109,8 +109,8 @@ export function Sidebar() {
           </div>
           {!collapsed && (
             <div className="animate-slide-in-left">
-              <h1 className="text-lg font-bold text-sidebar-foreground">RailSync</h1>
-              <p className="text-xs text-sidebar-foreground/60">Pro Platform</p>
+              <h1 className="text-lg font-bold text-sidebar-foreground">Kernex</h1>
+              <p className="text-xs text-sidebar-foreground/60">IoT Platform</p>
             </div>
           )}
         </Link>
@@ -201,13 +201,13 @@ export function Sidebar() {
         {!collapsed && (
           <div className="flex items-center gap-3 rounded-lg bg-sidebar-accent/50 p-3">
             <div className="flex h-8 w-8 items-center justify-center rounded-full bg-sidebar-primary">
-              <span className="text-sm font-semibold text-sidebar-primary-foreground">IR</span>
+              <span className="text-sm font-semibold text-sidebar-primary-foreground">K</span>
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium text-sidebar-foreground truncate">Indian Railways</p>
+              <p className="text-sm font-medium text-sidebar-foreground truncate">Kernex Systems</p>
               <p className="text-xs text-sidebar-foreground/60">Connected</p>
             </div>
-            <div className="h-2 w-2 rounded-full bg-track-green animate-pulse" />
+            <div className="h-2 w-2 rounded-full bg-success animate-pulse" />
           </div>
         )}
       </div>
