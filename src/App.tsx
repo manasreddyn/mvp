@@ -9,6 +9,9 @@ import { SplashScreen } from "@/components/SplashScreen";
 import Dashboard from "@/pages/Dashboard";
 import PowerAnalytics from "@/pages/analytics/PowerAnalytics";
 import IoTTelemetry from "@/pages/analytics/IoTTelemetry";
+import TicketingAnalytics from "@/pages/analytics/TicketingAnalytics";
+import FootfallAnalytics from "@/pages/analytics/FootfallAnalytics";
+import AssetManagement from "@/pages/analytics/AssetManagement";
 import LogisticsHub from "@/pages/LogisticsHub";
 import AuctionDashboard from "@/pages/AuctionDashboard";
 import DynamicPricing from "@/pages/DynamicPricing";
@@ -22,6 +25,7 @@ import Cleanliness from "@/pages/safety/Cleanliness";
 import LegacyIntegration from "@/pages/safety/LegacyIntegration";
 import IncidentManagement from "@/pages/safety/IncidentManagement";
 import IoTDashboard from "@/pages/iot/IoTDashboard";
+import IoTDevices from "@/pages/iot/IoTDevices";
 
 const queryClient = new QueryClient();
 
@@ -43,15 +47,15 @@ const App = () => {
               <Route path="/" element={<Dashboard />} />
               {/* IoT Command Center */}
               <Route path="/iot" element={<IoTDashboard />} />
-              <Route path="/iot/devices" element={<IoTDashboard />} />
-              <Route path="/iot/alerts" element={<IoTDashboard />} />
-              <Route path="/iot/ai" element={<IoTDashboard />} />
+              <Route path="/iot/devices" element={<IoTDevices />} />
+              <Route path="/iot/alerts" element={<IoTDevices />} />
+              <Route path="/iot/ai" element={<IoTDevices />} />
               {/* Analytics */}
               <Route path="/analytics/power" element={<PowerAnalytics />} />
               <Route path="/analytics/iot" element={<IoTTelemetry />} />
-              <Route path="/analytics/ticketing" element={<PowerAnalytics />} />
-              <Route path="/analytics/footfall" element={<PowerAnalytics />} />
-              <Route path="/analytics/assets" element={<PowerAnalytics />} />
+              <Route path="/analytics/ticketing" element={<TicketingAnalytics />} />
+              <Route path="/analytics/footfall" element={<FootfallAnalytics />} />
+              <Route path="/analytics/assets" element={<AssetManagement />} />
               {/* Other modules */}
               <Route path="/logistics" element={<LogisticsHub />} />
               <Route path="/auction" element={<AuctionDashboard />} />
