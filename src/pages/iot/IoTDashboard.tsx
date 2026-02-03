@@ -200,30 +200,28 @@ export default function IoTDashboard() {
         <div className="lg:col-span-2 space-y-6">
           {/* Real-Time Data Stream */}
           <Card className="chart-container">
-            <CardHeader className="pb-2">
-              <div className="flex items-center justify-between">
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <Activity className="h-5 w-5 text-primary" />
-                  Real-Time Data Stream
-                </CardTitle>
-                <Tabs defaultValue="table" className="w-auto">
+            <Tabs defaultValue="table">
+              <CardHeader className="pb-2">
+                <div className="flex items-center justify-between">
+                  <CardTitle className="text-lg flex items-center gap-2">
+                    <Activity className="h-5 w-5 text-primary" />
+                    Real-Time Data Stream
+                  </CardTitle>
                   <TabsList className="h-8">
                     <TabsTrigger value="table" className="text-xs px-3">Table</TabsTrigger>
                     <TabsTrigger value="chart" className="text-xs px-3">Chart</TabsTrigger>
                   </TabsList>
-                </Tabs>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <Tabs defaultValue="table">
+                </div>
+              </CardHeader>
+              <CardContent>
                 <TabsContent value="table" className="mt-0">
                   <SensorDataStream readings={readings} devices={devices} limit={8} />
                 </TabsContent>
                 <TabsContent value="chart" className="mt-0">
                   <RealTimeStreamChart readings={readings} />
                 </TabsContent>
-              </Tabs>
-            </CardContent>
+              </CardContent>
+            </Tabs>
           </Card>
 
           {/* Device Status Grid */}

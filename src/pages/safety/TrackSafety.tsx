@@ -11,6 +11,9 @@ import {
   Clock,
   CheckCircle,
   XCircle,
+  FileText,
+  FileSpreadsheet,
+  FileJson,
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -32,6 +35,12 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import {
   LineChart,
   Line,
   XAxis,
@@ -47,6 +56,8 @@ import {
 } from 'recharts';
 import { cn } from '@/lib/utils';
 import { trackSafetyData } from '@/lib/safetyMockData';
+import { exportToCSV, exportToJSON, exportToTextReport, exportToPDF, type ExportData } from '@/lib/exportUtils';
+import { useToast } from '@/hooks/use-toast';
 
 // Generate mock geometry trend data
 const geometryTrendData = Array.from({ length: 30 }, (_, i) => ({
@@ -119,6 +130,7 @@ const riskMatrixData = [
 export default function TrackSafety() {
   const [selectedZone, setSelectedZone] = useState('all');
   const [selectedMetric, setSelectedMetric] = useState('gaugeDeviation');
+  const { toast } = useToast();
 
   const getSeverityBadge = (severity: string) => {
     const colors: Record<string, string> = {
@@ -150,6 +162,62 @@ export default function TrackSafety() {
     }
   };
 
+  const handleExportReport = (format: 'csv' | 'json' | 'txt' | 'pdf') => {
+    const timestamp = new Date().toLocaleString('en-IN');
+    const filename = `track-safety-report-${new Date().toISOString().split('T')[0]}`;
+    
+    const exportData: ExportData = {
+      title: 'Track Safety Report',
+      timestamp,
+      summary: {
+        sectionsMonitored: 1247,
+        criticalAlerts: 12,
+        avgTrackHealth: trackSafetyData.healthScore,
+        maintenancePending: 45,
+        speedRestrictions: 23,
+        selectedZone: selectedZone === 'all' ? 'All Zones' : selectedZone.toUpperCase(),
+      },
+      data: trackDefects.map(defect => ({
+        id: defect.id,
+        sectionId: defect.sectionId,
+        kmPost: defect.kmPost,
+        type: defect.type,
+        severity: defect.severity,
+        detected: defect.detected,
+        predictedFailure: defect.predictedFailure,
+        priority: defect.priority,
+        status: defect.status,
+      })),
+    };
+
+    try {
+      switch (format) {
+        case 'csv':
+          exportToCSV(exportData.data, filename);
+          break;
+        case 'json':
+          exportToJSON(exportData, filename);
+          break;
+        case 'txt':
+          exportToTextReport(exportData, filename);
+          break;
+        case 'pdf':
+          exportToPDF(exportData, filename);
+          break;
+      }
+      toast({
+        title: 'Export Successful',
+        description: `Report exported as ${format.toUpperCase()}`,
+      });
+    } catch (error) {
+      toast({
+        title: 'Export Failed',
+        description: 'There was an error exporting the report',
+        variant: 'destructive',
+      });
+    }
+  };
+
   return (
     <div className="space-y-6 animate-fade-in">
       {/* Page Header */}
@@ -164,10 +232,32 @@ export default function TrackSafety() {
           </p>
         </div>
         <div className="flex items-center gap-3">
-          <Button variant="outline" size="sm">
-            <Download className="h-4 w-4 mr-2" />
-            Export Report
-          </Button>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" size="sm">
+                <Download className="h-4 w-4 mr-2" />
+                Export Report
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem onClick={() => handleExportReport('csv')}>
+                <FileSpreadsheet className="h-4 w-4 mr-2" />
+                Export as CSV
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handleExportReport('json')}>
+                <FileJson className="h-4 w-4 mr-2" />
+                Export as JSON
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handleExportReport('txt')}>
+                <FileText className="h-4 w-4 mr-2" />
+                Export as Text
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handleExportReport('pdf')}>
+                <Download className="h-4 w-4 mr-2" />
+                Export as PDF
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
           <Button size="sm">
             <Filter className="h-4 w-4 mr-2" />
             Apply Filters
